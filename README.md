@@ -1,15 +1,15 @@
 [![Testspace](http://www.testspace.com/public/img/testspace_logo.png)](http://www.testspace.com)
 ***
 
-## Java/TestNG sample for demonstrating Testspace
+## Java/JUnit sample for demonstrating Testspace
 
-Sample demonstrates techniques for using Testspace with Java code and the [TestNG](http://testng.org/).
+Sample demonstrates techniques for using Testspace with Java code and the [JUnit](http://junit.org/).
 
 ***
 
-[![Build Status](https://travis-ci.org/testspace-samples/java.testng.svg?branch=master)](https://travis-ci.org/testspace-samples/java.testng)
-[![Space Health](https://samples.testspace.com/projects/88/spaces/325/badge)](https://samples.testspace.com/projects/88/spaces/325 "Test Cases")
-[![Space Metric](https://samples.testspace.com/projects/88/spaces/325/metrics/228/badge)](https://samples.testspace.com/projects/88/spaces/325/metrics#metric-228 "Line/Statement Coverage")
+[![Build Status](https://travis-ci.org/testspace-samples/java.junit.svg?branch=master)](https://travis-ci.org/testspace-samples/java.junit)
+[![Space Health](https://samples.testspace.com/projects/88/spaces/294/badge)](https://samples.testspace.com/projects/88/spaces/294 "Test Cases")
+[![Space Metric](https://samples.testspace.com/projects/88/spaces/294/metrics/236/badge)](https://samples.testspace.com/projects/88/spaces/294/metrics#metric-236 "Line/Statement Coverage")
 
 ***
 
@@ -23,10 +23,10 @@ Build examples:
 Publishing results example:
 
 <pre>
- testspace publish target/surefire-reports/TEST-TestSuite.xml target/site/cobertura/coverage.xml
+ testspace publish target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xml
 </pre>
 
-Checkout the [Space](https://samples.testspace.com/projects/java/spaces/testng).
+Checkout the [Space](https://samples.testspace.com/projects/java/spaces/junit).
 
 ***
 

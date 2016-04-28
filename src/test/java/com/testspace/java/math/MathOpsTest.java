@@ -1,24 +1,21 @@
 package com.testspace.java.math;
 
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-import static org.testng.Assert.assertEquals;
+import junit.framework.TestCase;
 
-public class MathOpsTest
+public class MathOpsTest extends TestCase
 {
 
     private int value1;
     private int value2;
 
-
-    @BeforeTest
-    public void setUp()
+    public MathOpsTest(String testName)
     {
+        super(testName);
+
         value1 = 3;
         value2 = 5;
     }
 
-    @Test
     public void testAdd1()
     {
         int total = 8;
@@ -26,7 +23,6 @@ public class MathOpsTest
         assertEquals(sum, total);
     }
 
-    @Test
     public void testAdd2willFail()
     {
         int total = 8;
@@ -36,7 +32,6 @@ public class MathOpsTest
         assertEquals(sum, total);
     }
 
-    @Test
     public void testAdd3()
     {
         int total = 9;
@@ -44,7 +39,6 @@ public class MathOpsTest
         assertEquals(sum, value1);
     }
 
-    @Test
     public void testSub1()
     {
         int total = 0;
