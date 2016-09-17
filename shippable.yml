@@ -2,12 +2,12 @@ language: java
 
 env:
   global:
-   - secure: j92cQvv6A0bfcfnnxsBnIyIZLm11PqIwSzoBrDuUcdB1+9gmraC1KpPkRJQGguIystP0VyXquYCgFwG3KhRfmc4MjZky/u2Fofarozc7f2+fBWrc974HjHwrU7IWJcl1Q/E5Cy0pQ87uk6zCHWBYbd5ONye84lTzwBxodyeLvwx2g4BdyxDrvGjodeEdygt14Vjwi0gKhfCQYq5Z6F6qhXbQO9MOKChlvQujudmiyzj9XUUS/m7X1ZB3nGVMsDIl44o+WiEgU4mxEa1qp1TDDQVdyXzRXb/0UP3xBH04Y6Lri3WNG5t+lepC6QrOpbIRrqPoQR7oxuPgXDMHg3CyFA==
-  
-before_script:
-  - ./testspace_install.sh
-  - export PATH="${HOME}/testspace:${PATH}"
+   - secure: iiKOFC7m5xA5NkM8YlM4Z2X2mhIPrFbQtZWV2mdHsUwNhURyuC2GT3pDyQYi43KcgXuol4A/LBu1X0prYPaW5YgvZGiK0NLdrnlxKGl0jmdSAOeZWqm26KzvM6SNhlexPqyYpbPyLzaC0l5bC1zMkBkHkHhXqymXx5Y5F3cT0ur0s5YZWfexbuMchndQIi5xho9Y8v/zpMNglv787vDAb+kJA2RWqDsK/qJighBz5pETTDK0djtUNGzEZpF8H0SKohGjBImcONrfY52A2D9S4/I3Jp4h8So2uW3H2mFIIouikGuOvo3RvCJJQehcMxBWA0XxmDJdLTWwHyahrw13cQ==
 
 script:
-  - testspace import .testspace.xml ${TESTSPACE_URL}
-  - testspace run ${TESTSPACE_URL}
+  - mvn clean compile
+  - mvn cobertura:cobertura -Dcobertura.report.format=xml
+
+after_script:  
+  - curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
+  - testspace [Tests]target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xml $TESTSPACE_TOKEN/${BRANCH}#ship.Build.${BUILD_NUMBER}
