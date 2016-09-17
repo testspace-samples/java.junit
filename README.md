@@ -6,10 +6,18 @@
 Sample demonstrates techniques for using Testspace with Java code and the [JUnit](http://junit.org/).
 
 ***
+Using Multiple Online CI Services:
 
 [![Build Status](https://travis-ci.org/testspace-samples/java.junit.svg?branch=master)](https://travis-ci.org/testspace-samples/java.junit)
-[![Space Health](https://samples.testspace.com/projects/88/spaces/294/badge)](https://samples.testspace.com/projects/88/spaces/294 "Test Cases")
-[![Space Metric](https://samples.testspace.com/projects/88/spaces/294/metrics/236/badge)](https://samples.testspace.com/projects/88/spaces/294/metrics#metric-236 "Line/Statement Coverage")
+[![Run Status](https://api.shippable.com/projects/5722082e2a8192902e1e3e96/badge?branch=master)](https://app.shippable.com/projects/5722082e2a8192902e1e3e96)
+
+***
+Publishing **Test Content** using www.testspace.com.
+
+[![Space Health](https://samples.testspace.com/projects/124/spaces/454/badge)](https://samples.testspace.com/projects/124/spaces/454 "Test Cases")
+[![Space Metric](https://samples.testspace.com/projects/124/spaces/454/metrics/293/badge)](https://samples.testspace.com/spaces/454/schema/Code%20Coverage "Code Coverage (branches)")
+[![Space Metric](https://samples.testspace.com/projects/124/spaces/454/metrics/295/badge)](https://samples.testspace.com/spaces/454/schema/Code%20Coverage "Code Coverage (methods)")
+
 
 ***
 
@@ -23,16 +31,19 @@ Build examples:
 Publishing results example:
 
 <pre>
- testspace publish target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xml
+testspace [Tests]target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xml  $TESTSPACE_TOKEN/$BRANCH_NAME
 </pre>
 
-Checkout the [Space](https://samples.testspace.com/projects/java/spaces/junit).
+Checkout the [Space](https://samples.testspace.com/projects/java.junit).
 
 ***
 
-To fork this example using Travis requires:
+To replicate this sample: 
   - Account at www.testspace.com.
-  - Travis Environment Variable: 
-    - `TESTSPACE_URL` = `credentials:@my-org-name.testspace.com/my-project/my-space`
+  - CI Environment Variable called **TESTSPACE_TOKEN** required:
+    -  `TESTSPACE_TOKEN` = `credentials@my-org-name.testspace.com/my-project`
     - `credentials` set to `username:password` or your [access token](http://help.testspace.com/using-your-organization:user-settings).
-    - `my-org-name.testspace.com/my-project/my-space` based on your subdomain, project, and space names. Refer [here](http://help.testspace.com/reference:runner-reference#login-credentials) for more details. 
+    - `my-org-name.testspace.com/my-project` based on your *subdomain* and *project* names. Refer [here](http://help.testspace.com/reference:runner-reference#login-credentials) for more details. 
+    
+
+ 
