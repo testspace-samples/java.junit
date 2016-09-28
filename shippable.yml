@@ -4,11 +4,12 @@ env:
   global:
    - secure: iiKOFC7m5xA5NkM8YlM4Z2X2mhIPrFbQtZWV2mdHsUwNhURyuC2GT3pDyQYi43KcgXuol4A/LBu1X0prYPaW5YgvZGiK0NLdrnlxKGl0jmdSAOeZWqm26KzvM6SNhlexPqyYpbPyLzaC0l5bC1zMkBkHkHhXqymXx5Y5F3cT0ur0s5YZWfexbuMchndQIi5xho9Y8v/zpMNglv787vDAb+kJA2RWqDsK/qJighBz5pETTDK0djtUNGzEZpF8H0SKohGjBImcONrfY52A2D9S4/I3Jp4h8So2uW3H2mFIIouikGuOvo3RvCJJQehcMxBWA0XxmDJdLTWwHyahrw13cQ==
 
-script:
+build:
+ ci:
   - mvn clean compile
   - mvn pmd:pmd
   - mvn cobertura:cobertura -Dcobertura.report.format=xml
 
-after_script:  
+post_ci:  
   - curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
   - testspace target/pmd.xml [Tests]target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xml $TESTSPACE_TOKEN/${BRANCH}#ship.Build.${BUILD_NUMBER}
