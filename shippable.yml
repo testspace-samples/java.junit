@@ -2,7 +2,7 @@ language: java
 
 env:
   global:
-   - secure: iiKOFC7m5xA5NkM8YlM4Z2X2mhIPrFbQtZWV2mdHsUwNhURyuC2GT3pDyQYi43KcgXuol4A/LBu1X0prYPaW5YgvZGiK0NLdrnlxKGl0jmdSAOeZWqm26KzvM6SNhlexPqyYpbPyLzaC0l5bC1zMkBkHkHhXqymXx5Y5F3cT0ur0s5YZWfexbuMchndQIi5xho9Y8v/zpMNglv787vDAb+kJA2RWqDsK/qJighBz5pETTDK0djtUNGzEZpF8H0SKohGjBImcONrfY52A2D9S4/I3Jp4h8So2uW3H2mFIIouikGuOvo3RvCJJQehcMxBWA0XxmDJdLTWwHyahrw13cQ==
+   - secure: GKig6dRs9LpzK/MJ/24SWafAT20d7PIKD11EgBi2r13ZfG9lZi1Ous6LTh8DfRn+nBMHMH+bBbwG98pACzCrfrdRu1Lp3CgkxyV4oo2hPlnCUNhdrz96MrvD0ExAGDg4hB5T7jZzYWBwM5wHQLMi1hRGWdimZvHpeRmj2HJKLuf5Mf22srlh1PQxDKw6XlAngZpYqZp0TkVlWsVLCFhm8BiR3ftu3jIY9gcDHtNCcYUQ0MeX2K0HOsqKThVjNHGn48MTezXaCWFw0Mm5b08WNLp4uwbwaPEMSwMYsPb4QL15tMogOwVQp771QtWm+w7RAt16XfzAiLNcYGMMNT8rkA==
 
 build:
  ci:
@@ -10,6 +10,11 @@ build:
   - mvn pmd:pmd
   - mvn cobertura:cobertura -Dcobertura.report.format=xml
 
- post_ci:  
+ # Requires TESTSPACE_TOKEN environment variable. 
+ on_success:
    - curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
-   - testspace target/pmd.xml [Tests]target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xml $TESTSPACE_TOKEN/${BRANCH}#ship.Build.${BUILD_NUMBER}
+   - testspace @.testspace.txt $TESTSPACE_TOKEN/${SHIPPABLE_REPO_SLUG/\//:}/${BRANCH}#ship.Build.${BUILD_NUMBER}
+
+ on_failure:
+   - curl -s https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin
+   - testspace @.testspace.txt $TESTSPACE_TOKEN/${SHIPPABLE_REPO_SLUG/\//:}/${BRANCH}#ship.Build.${BUILD_NUMBER}
