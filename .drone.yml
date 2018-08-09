@@ -8,10 +8,12 @@ pipeline:
   testspace:
     image: tutum/curl
     commands:
+      - find -name "*.xml"
+      - pwd
       - apt update --yes && apt install git --yes
       - curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C /usr/local/bin
       - testspace config url $${TS_TOKEN}:@samples.testspace.com/
-      - testspace target/pmd.xml [Tests]target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xmll
+      - testspace target/pmd.xml [Tests]target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xml
     secrets: [ ts_token ]
     when:
       status:  [ failure, success ]
