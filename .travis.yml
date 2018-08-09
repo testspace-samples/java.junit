@@ -1,6 +1,11 @@
 language:
   - java
 
+branches:
+  branches:
+  only:
+  - master
+
 before_script:
   - mkdir -p $HOME/bin
   - curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C $HOME/bin
