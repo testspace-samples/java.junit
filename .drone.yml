@@ -1,0 +1,17 @@
+pipeline:
+  build:
+    image: maven:3.5.4-jdk-8
+    commands:
+      - mvn clean compile
+      - mvn pmd:pmd
+      - mvn cobertura:cobertura -Dcobertura.report.format=xml
+  testspace:
+    image: tutum/curl
+    commands:
+      - apt update --yes && apt install git --yes
+      - curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C /usr/local/bin
+      - testspace config url $${TS_TOKEN}:@samples.testspace.com/
+      - testspace target/pmd.xml [Tests]target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xmll
+    secrets: [ ts_token ]
+    when:
+      status:  [ failure, success ]
