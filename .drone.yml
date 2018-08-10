@@ -1,8 +1,11 @@
 pipeline:
-  test:
+  build:
     image: maven:3.5.4-jdk-8
     commands:
       - mvn clean compile
+  test:
+    image: maven:3.5.4-jdk-8
+    commands:
       - mvn cobertura:cobertura -Dcobertura.report.format=xml
   lint:
     image: maven:3.5.4-jdk-8
@@ -13,7 +16,7 @@ pipeline:
     commands:
       - printenv
       - apt update --yes && apt install git --yes
-      - curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C /usr/local/bin
+      - curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux-dev.tgz | tar -zxvf- -C /usr/local/bin
       - testspace config url $${TS_TOKEN}:@samples.testspace.com/
       - testspace target/pmd.xml [Tests]target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xml
     secrets: [ ts_token ]
