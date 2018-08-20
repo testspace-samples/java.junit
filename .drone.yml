@@ -12,11 +12,9 @@ pipeline:
     commands:
       - mvn pmd:pmd
   testspace:
-    image: tutum/curl
+    image: s2technologies/testspace-client
+    pull: true
     commands:
-      - printenv
-      - apt update --yes && apt install git --yes
-      - curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux-dev.tgz | tar -zxvf- -C /usr/local/bin
       - testspace config url $${TS_TOKEN}:@samples.testspace.com/
       - testspace target/pmd.xml [Tests]target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xml
     secrets: [ ts_token ]
