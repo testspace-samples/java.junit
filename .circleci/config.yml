@@ -4,6 +4,9 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk-stretch-browsers
+    branches:
+      only:
+        - master"
     steps:
       - checkout
       - run: "curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | sudo tar -zxvf- -C /usr/local/bin"
