@@ -15,7 +15,7 @@ Using Multiple Online CI Services:
 
 [![Build Status](https://travis-ci.org/testspace-samples/java.junit.svg?branch=master)](https://travis-ci.org/testspace-samples/java.junit)
 [![CircleCI](https://circleci.com/gh/testspace-samples/java.junit.svg?style=svg)](https://circleci.com/gh/testspace-samples/java.junit)
-[![Run Status](https://api.shippable.com/projects/5722082e2a8192902e1e3e96/badge?branch=master)](https://app.shippable.com/projects/5722082e2a8192902e1e3e96)
+[![Run Status](https://api.shippable.com/projects/5a1068f8e366a70700f78952/badge?branch=master)](https://app.shippable.com/projects/5a1068f8e366a70700f78952)
 
 ***
 Publishing **Test Content** using www.testspace.com.
