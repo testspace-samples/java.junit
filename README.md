@@ -7,15 +7,15 @@
 Sample demonstrates techniques for using Testspace with Java code and the [JUnit](http://junit.org/).
   * Using a Testspace Project that is `connected` with this GitHub Repo
   * Using 3 Online CI services for demonstration purposes only
-  * Can review the Results at [testspace-samples:java.junit](https://samples.testspace.com/projects/testspace-samples:java.junit)  
-  * Refer to our [Getting Started](https://help.testspace.com/getting-started) help articles for more information
+  * Can review the Results at [testspace-samples:java.junit](https://samples.testspace.com/projects/testspace-samples:java.junit)
+  * Refer to our [Help](https://help.testspace.com/) for more information
 
 ***
 Using Multiple Online CI Services:
 
+![Build](https://github.com/testspace-samples/java.junit/workflows/Build/badge.svg)
 [![Build Status](https://travis-ci.org/testspace-samples/java.junit.svg?branch=master)](https://travis-ci.org/testspace-samples/java.junit)
 [![CircleCI](https://circleci.com/gh/testspace-samples/java.junit.svg?style=svg)](https://circleci.com/gh/testspace-samples/java.junit)
-[![Run Status](https://api.shippable.com/projects/5a1068f8e366a70700f78952/badge?branch=master)](https://app.shippable.com/projects/5a1068f8e366a70700f78952)
 
 ***
 Publishing **Test Content** using www.testspace.com.
@@ -26,7 +26,7 @@ Publishing **Test Content** using www.testspace.com.
 
 ***
 
-Download and configure the Testspace client 
+Download and configure the Testspace client
 
 <pre>
 mkdir -p $HOME/bin
@@ -39,12 +39,12 @@ Build examples:
 
 <pre>
  mvn clean compile
- mvn pmd:pmd 
+ mvn pmd:pmd
  mvn cobertura:cobertura -Dcobertura.report.format=xml
 </pre>
 
-Push Content using Testspace client 
+Push Content using Testspace client
 
 <pre>
 testspace target/pmd.xml [Tests]target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xml
-</pre> 
+</pre>
