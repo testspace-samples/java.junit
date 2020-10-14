@@ -26,5 +26,5 @@ jobs:
           mvn cobertura:cobertura -Dcobertura.report.format=xml
       - name: Push
         run: |
-          target/pmd.xml [Tests]target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xml
+          testspace target/pmd.xml [Tests]target/surefire-reports/TEST*.xml target/site/cobertura/coverage.xml
         if: always()
