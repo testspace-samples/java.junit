@@ -22,7 +22,7 @@ jobs:
           mvn pmd:pmd
       - name: Test
         run: |
-          mvn jacoco:report -Djacoco.report.formats=XML
+          mvn test
       - name: Push
         run: |
           testspace target/pmd.xml [Tests]target/surefire-reports/TEST*.xml target/site/jacoco/jacoco.xml
