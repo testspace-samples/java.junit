@@ -8,11 +8,13 @@
   <name>junit</name>
   <url>http://maven.apache.org</url>
   <build>
-    <plugin>
-      <groupId>org.jacoco</groupId>
-      <artifactId>jacoco-maven-plugin</artifactId>
-      <version>0.8.16</version>
-    </plugin>    
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.16</version>
+      </plugin>    
+    </plugins>
   </build>    
   <reporting>
     <plugins>
